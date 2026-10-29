@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install WabbitWeather</title>
+  <!-- Made by cyd-release.sh from install-page.html, filled in from release.conf -->
+
+  <!-- ESP Web Tools install button component -->
+  <script
+    type="module"
+    src="https://unpkg.com/esp-web-tools@10.4.0/dist/web/install-button.js?module"
+  ></script>
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      --accent: #2f6feb;
+      --bg: #ffffff;
+      --fg: #1b1f24;
+      --muted: #6b7280;
+      --border: #e2e5e9;
+      --card: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --accent: #4c8dff;
+        --bg: #16181c;
+        --fg: #e6e8eb;
+        --muted: #9aa1ab;
+        --border: #30343b;
+        --card: #1e2126;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      display: flex;
+      justify-content: center;
+      padding: 48px 16px;
+    }
+    main {
+      width: 100%;
+      max-width: 560px;
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+    p.subtitle {
+      color: var(--muted);
+      margin-top: 0;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--fg);
+      margin-bottom: 8px;
+    }
+    .hint {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin: 0 0 20px;
+    }
+    #lang-field select { margin-bottom: 20px; }
+    #lang-field.hidden { display: none; }
+    esp-web-install-button {
+      display: block;
+      margin-top: 8px;
+    }
+    esp-web-install-button button {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      background: var(--accent);
+      color: white;
+      cursor: pointer;
+    }
+    #unsupported {
+      display: none;
+      background: #fff3cd;
+      border: 1px solid #ffe69c;
+      color: #664d03;
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    .steps {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      padding-left: 20px;
+    }
+    .steps li { margin-bottom: 6px; }
+    footer {
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 24px;
+    }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>WabbitWeather &mdash; CYD Install</h1>
+    <p class="subtitle">Install WabbitWeather v1.8.0 on your 2.8&quot; CYD (Cheap Yellow Display) straight from your browser. No Arduino IDE needed.</p>
+
+    <div id="unsupported">
+      This installer needs a browser that can talk to USB serial ports:
+      <strong>Chrome</strong>, <strong>Edge</strong> or <strong>Opera</strong> on a computer.
+      It doesn't work in Safari, Firefox or on phones.
+    </div>
+
+    <div class="card">
+      <label for="board">Board</label>
+      <select id="board">
+        <option value="ST7789">ST7789</option>
+        <option value="ILI9341">ILI9341</option>
+      </select>
+      <p class="hint">Not sure? Install either one. If the screen stays white or the colours look wrong, install the other.</p>
+
+      <div id="lang-field">
+        <label for="language">Language</label>
+        <select id="language">
+          <option value="EN">English</option>
+          <option value="FR">Français</option>
+          <option value="DE">Deutsch</option>
+          <option value="ES">Español</option>
+          <option value="NL">Nederlands</option>
+          <option value="PT">Português</option>
+          <option value="TR">Türkçe</option>
+        </select>
+      </div>
+
+      <esp-web-install-button id="install-btn">
+        <button slot="activate">Connect &amp; Install</button>
+      </esp-web-install-button>
+    </div>
+
+    <div class="card">
+      <strong>Before you start:</strong>
+      <ol class="steps">
+        <li>
+          <strong>First time flashing a CYD on this computer?</strong>
+          Its USB chip (CH340) may need a driver before the browser can see it &mdash;
+          without it, the port list stays empty.
+          <a href="https://www.wch-ic.com/downloads/CH341SER_ZIP.html" target="_blank" rel="noopener">Windows driver</a>
+          &middot;
+          <a href="https://github.com/WCHSoftGroup/ch34xser_macos" target="_blank" rel="noopener">macOS driver</a>
+          &middot; Linux usually needs no driver.
+        </li>
+        <li>Connect the CYD with a USB data cable (not a charge-only one).</li>
+        <li>Pick your board and language, click &quot;Connect &amp; Install&quot; and choose the CYD's port.</li>
+        <li>Installing erases the board, including any saved WiFi and settings, then flashes everything in one go &mdash; fonts and pictures included.</li>
+        <li>When it restarts, follow the setup on the screen to connect it to your WiFi.</li>
+      </ol>
+    </div>
+
+    <footer>
+      Need help, or want to build it yourself? See <a href="https://github.com/wabbitguy/WabbitWeather" target="_blank" rel="noopener">WabbitWeather on GitHub</a>.
+    </footer>
+  </main>
+
+  <script>
+    const board = document.getElementById('board');
+    const language = document.getElementById('language');
+    const installBtn = document.getElementById('install-btn');
+
+    // A single-language project has no language list
+    if (language.options.length === 0) {
+      document.getElementById('lang-field').classList.add('hidden');
+    } else {
+      // Start on the browser's own language when the firmware has it
+      const browserLang = (navigator.language || 'en').slice(0, 2).toUpperCase();
+      for (const opt of language.options) {
+        if (opt.value === browserLang) language.value = browserLang;
+      }
+    }
+
+    // One manifest per board/language: manifest_<board>_<language>.json.
+    // The ?t= makes the browser fetch it fresh: GitHub Pages lets browsers
+    // keep files for 10 minutes, which would hide an updated manifest.
+    function updateManifest() {
+      let name = 'manifest_' + board.value;
+      if (language.options.length) name += '_' + language.value;
+      installBtn.setAttribute('manifest', name + '.json?t=' + Date.now());
+    }
+    board.addEventListener('change', updateManifest);
+    language.addEventListener('change', updateManifest);
+    updateManifest();
+
+    if (!('serial' in navigator)) {
+      document.getElementById('unsupported').style.display = 'block';
+      installBtn.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

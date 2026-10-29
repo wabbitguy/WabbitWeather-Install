@@ -1,0 +1,9 @@
+{
+  "name": "WabbitWeather",
+  "version": "v1.8.0",
+  "new_install_prompt_erase": false,
+  "new_install_improv_wait_time": 0,
+  "builds": [
+    { "chipFamily": "ESP32", "parts": [ { "path": "WabbitWeather_ST7789_NL.bin", "offset": 0 } ] }
+  ]
+}
