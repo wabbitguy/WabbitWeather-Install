@@ -116,6 +116,7 @@
       padding-left: 20px;
     }
     .steps li { margin-bottom: 6px; }
+    .manual a { color: var(--accent); font-weight: 600; }
     footer {
       color: var(--muted);
       font-size: 0.8rem;
@@ -128,7 +129,7 @@
 <body>
   <main>
     <h1>WabbitWeather &mdash; CYD Install</h1>
-    <p class="subtitle">Install WabbitWeather v1.8.3 on your 2.8&quot; CYD (Cheap Yellow Display) straight from your browser. No Arduino IDE needed.</p>
+    <p class="subtitle">Install WabbitWeather v1.8.4 on your 2.8&quot; CYD (Cheap Yellow Display) straight from your browser. No Arduino IDE needed.</p>
 
     <div id="unsupported">
       This installer needs a browser that can talk to USB serial ports:
@@ -180,6 +181,10 @@
         <li>Installing erases the board, including any saved WiFi and settings, then flashes everything in one go &mdash; fonts and pictures included.</li>
         <li>When it restarts, follow the setup on the screen to connect it to your WiFi.</li>
       </ol>
+    </div>
+
+    <div class="card manual">
+      <strong>Up and running?</strong> <a href="manual.html">How to use WabbitWeather &rarr;</a>
     </div>
 
     <footer>

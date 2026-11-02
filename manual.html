@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to use WabbitWeather</title>
+  <!--
+    Kept by hand. The release builder never writes or deletes this file;
+    it only puts a "How to use" link to it on index.html (MANUAL in release.conf).
+
+    TO ADD A SCREEN: copy one <section class="card"> ... </section> block,
+    change the heading, the words and the picture name.
+    Pictures go in the screens/ folder. Use lowercase names with no spaces
+    (GitHub cares about capitals, the Mac doesn't). PNG or JPG both work.
+    No picture yet? Leave the <img> line out; the block still works.
+  -->
+  <style>
+    :root {
+      color-scheme: light dark;
+      --accent: #2f6feb;
+      --bg: #ffffff;
+      --fg: #1b1f24;
+      --muted: #6b7280;
+      --border: #e2e5e9;
+      --card: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --accent: #4c8dff;
+        --bg: #16181c;
+        --fg: #e6e8eb;
+        --muted: #9aa1ab;
+        --border: #30343b;
+        --card: #1e2126;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      display: flex;
+      justify-content: center;
+      padding: 48px 16px;
+      line-height: 1.5;
+    }
+    main {
+      width: 100%;
+      max-width: 560px;
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+    h2 {
+      font-size: 1.15rem;
+      margin: 0 0 12px;
+    }
+    p.subtitle {
+      color: var(--muted);
+      margin-top: 0;
+      margin-bottom: 32px;
+    }
+    a { color: var(--accent); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .card img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 16px;
+      border-radius: 6px;
+    }
+    .card ul, .card ol {
+      padding-left: 20px;
+      margin: 0;
+    }
+    .card li { margin-bottom: 6px; }
+    .note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 12px 0 0;
+    }
+    footer {
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>How to use WabbitWeather</h1>
+    <p class="subtitle">What's on the screen, where to tap, and how to set it up. <a href="index.html">&larr; Back to the installer</a></p>
+
+    <!-- ===== One screen ===== -->
+    <section class="card">
+      <h2>Getting it on your WiFi</h2>
+      <!-- <img src="screens/wifi-qr.png" alt="The WiFi setup QR code" width="320"> -->
+      <ol>
+        <li>After installing, the screen shows a QR code. Point your phone's camera at it and tap <strong>Join</strong>.</li>
+        <li>A second QR code appears. Scan it to open the setup page.</li>
+        <li>Tap <strong>Configure WiFi</strong>, pick your home WiFi and type its password. It has to be a 2.4&nbsp;GHz network; the ESP32 can't use 5&nbsp;GHz.</li>
+        <li>WabbitWeather restarts and connects to your WiFi.</li>
+      </ol>
+      <p class="note">No camera? Join the <strong>WabbitWeather</strong> WiFi network by hand (it has no password) and go to <strong>http://192.168.4.1</strong>.</p>
+    </section>
+
+    <!-- ===== One screen ===== -->
+    <section class="card">
+      <h2>The main screen</h2>
+      <img src="screens/wabbitweather.png" alt="WabbitWeather's main screen" width="360">
+      <ul>
+        <li><strong>Tap the clock</strong> for the About screen: the version and the IP address.</li>
+        <li><strong>Tap the big weather icon</strong> to switch between your two locations.</li>
+        <li><strong>Hold the big weather icon for 2 seconds</strong> to get fresh weather now. A ring at the top left shows it's working.</li>
+        <li><strong>Tap the forecast days</strong> to page between days 1&ndash;4 and days 5&ndash;8.</li>
+      </ul>
+    </section>
+
+    <!-- ===== One screen ===== -->
+    <section class="card">
+      <h2>The settings page</h2>
+      <!-- <img src="screens/settings.png" alt="The settings page" width="360"> -->
+      <ul>
+        <li>Open <strong>http://wabbitweather.local</strong> in a browser on the same WiFi. If that doesn't open, tap the clock on the display and type in the IP address it shows.</li>
+        <li>Click the map to set your location. The time zone is found for you.</li>
+        <li>Press <strong>Update &amp; Save</strong>. The display updates right away.</li>
+      </ul>
+    </section>
+
+    <footer>
+      More details and the source code: <a href="https://github.com/wabbitguy/WabbitWeather" target="_blank" rel="noopener">WabbitWeather on GitHub</a>.
+    </footer>
+  </main>
+</body>
+</html>
